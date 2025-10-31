@@ -45,20 +45,6 @@ export default function Hero() {
                 Resume
               </a>
             </div>
-
-            {/* Scroll hint */}
-            <a
-              href="#projects"
-              className="group mt-10 inline-flex items-center gap-2 text-sm text-muted hover:text-fg"
-              aria-label="Scroll to projects"
-            >
-              <span className="inline-block h-5 w-5 rounded-full border border-border grid place-items-center transition group-hover:bg-card">
-                <svg width="14" height="14" viewBox="0 0 24 24" className="opacity-70">
-                  <path d="M12 5v14m0 0l-5-5m5 5l5-5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </span>
-              <span>Scroll to projects</span>
-            </a>
           </div>
 
           {/* Interactive illustration */}
