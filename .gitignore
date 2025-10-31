@@ -37,3 +37,4 @@ dist
 .env.*
 .DS_Store
 .vscode
+src/**/*.d.ts
