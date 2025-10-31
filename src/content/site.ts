@@ -8,7 +8,7 @@ export const site = {
   links: {
     email: "wangmatthew152@gmail.com",
     github: "https://github.com/Round-potato",
-    linkedin: "https://linkedin.com/in/matthewwang",
+    linkedin: "www.linkedin.com/in/wangmatthew152",
   },
 } as const;
 
