@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 0 0% 100%;
+  --fg: 222 47% 11%;
+  --muted: 215 16% 47%;
+  --card: 0 0% 100%;
+  --border: 214 32% 91%;
+  --accent: 200 98% 39%; /* a tasteful blue */
+}
+
+[data-theme="dark"] {
+  --bg: 222 47% 10%;
+  --fg: 210 40% 98%;
+  --muted: 214 32% 75%;
+  --card: 222 47% 12%;
+  --border: 217 33% 20%;
+  --accent: 199 89% 48%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  @apply bg-bg text-fg antialiased;
+}
+
+.prose {
+  @apply text-fg;
+}
+
+/* Focus styles for accessibility */
+a:focus-visible,
+button:focus-visible {
+  @apply outline-2 outline-offset-2 outline-accent;
+}
+
