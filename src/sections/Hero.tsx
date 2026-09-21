@@ -1,75 +1,79 @@
-import Container from "../components/Container";
-import { site } from "../content/site";
-import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from "framer-motion";
-import { useEffect } from "react";
-import SheepFlock from "../components/SheepFlock";
-
+import Container from '../components/Container';
+import Icon from '../components/Icon';
+import { site } from '../content/site';
 export default function Hero() {
-  const prefersReduced = useReducedMotion();
-  const mx = useMotionValue(0);
-  const my = useMotionValue(0);
-  const rotY = useSpring(useTransform(mx, [-25, 25], [-6, 6]), { stiffness: 120, damping: 12 });
-  const rotX = useSpring(useTransform(my, [-25, 25], [6, -6]), { stiffness: 120, damping: 12 });
-
-  useEffect(() => {
-    if (prefersReduced) return;
-    const handle = (e: MouseEvent) => {
-      const { innerWidth: w, innerHeight: h } = window;
-      mx.set(((e.clientX - w / 2) / w) * 50);
-      my.set(((e.clientY - h / 2) / h) * 50);
-    };
-    window.addEventListener("mousemove", handle);
-    return () => window.removeEventListener("mousemove", handle);
-  }, [prefersReduced, mx, my]);
-
   return (
-    <section className="relative py-20 sm:py-28 overflow-hidden">
-      {/* interactive background */}
-      <SheepFlock density={0.00011} repelRadius={170} repelStrength={1200} />
-
-
+    <section id="home" className="hero" aria-labelledby="hero-title">
       <Container>
-        <div className="grid lg:grid-cols-2 gap-12 items-start lg:items-center">
-          {/* Text */}
-          <div>
-            <h1 className="text-6xl sm:text-7xl font-bold tracking-tight">
-              Hello,<br />I&apos;m Matt.
+        <div className="hero-grid">
+          <div className="hero-copy">
+            <p className="eyebrow">
+              <span className="small-star" aria-hidden="true">
+                ✳
+              </span>{' '}
+              A WORK IN CURIOSITY
+            </p>
+            <h1 id="hero-title">
+              Hello,
+              <br />
+              I’m <em>Matt.</em>
             </h1>
-            <p className="mt-3 text-lg text-muted max-w-2xl">{site.tagline}</p>
-
-            <div className="mt-6 flex gap-3">
-              <a href="#projects" className="rounded-full border border-border px-4 py-2 text-sm hover:bg-card transition">
-                View Projects
+            <p className="hero-tagline">{site.tagline}</p>
+            <p className="hero-description">
+              Exploring code, creativity, and the things that connect them.
+            </p>
+            <div className="hero-buttons">
+              <a href="#projects" className="button button-primary">
+                Explore my work <Icon name="down" />
               </a>
-              <a href="/resume.pdf" className="rounded-full border border-border px-4 py-2 text-sm hover:bg-card transition">
-                Resume
+              <a
+                href="/resume.pdf"
+                className="button button-secondary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Résumé <Icon name="arrow" />
+                <span className="sr-only"> (PDF, opens in a new tab)</span>
               </a>
             </div>
+            <div className="hero-note">
+              <span className="note-line" aria-hidden="true" />
+              Developer by curiosity. Creative at heart.
+            </div>
           </div>
-
-          {/* Interactive illustration */}
-          <div className="hidden lg:flex items-center justify-end relative">
-            <motion.div
-              className="relative"
-              style={!prefersReduced ? { rotateX: rotX, rotateY: rotY } : undefined}
-              whileHover={!prefersReduced ? { scale: 1.03, rotate: 1 } : undefined}
-              transition={{ type: "spring", stiffness: 160, damping: 14 }}
-            >
-              <motion.img
-                src="/robot-illustration-2.png"
-                alt="Two friendly robots cooking over a pot"
-                className="w-full max-w-sm select-none"
-                style={{ filter: "drop-shadow(0 8px 24px rgba(0,0,0,0.12))" }}
-                animate={
-                  prefersReduced
-                    ? undefined
-                    : { y: [0, -8, 0], rotate: [0, 0.6, -0.6, 0] }
-                }
-                transition={prefersReduced ? undefined : { duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                draggable={false}
-              />
-            </motion.div>
-          </div>
+          <figure className="hero-art">
+            <div className="art-topline">
+              <span>THE CREATIVE PROCESS</span>
+              <span aria-hidden="true">FIG. 01</span>
+            </div>
+            <div className="art-orbit" aria-hidden="true" />
+            <span className="art-spark art-spark-one" aria-hidden="true">
+              ✳
+            </span>
+            <span className="art-spark art-spark-two" aria-hidden="true">
+              +
+            </span>
+            <img
+              src="/robot-illustration-2.png"
+              alt="Two friendly robots making a meal together"
+              width="853"
+              height="1280"
+              draggable={false}
+            />
+            <figcaption>
+              <span className="handwritten">Always cooking something up.</span>
+              <span aria-hidden="true">↗</span>
+            </figcaption>
+          </figure>
+        </div>
+        <div className="hero-bottom">
+          <span>
+            CODE <span aria-hidden="true">/</span> ART{' '}
+            <span aria-hidden="true">/</span> A LITTLE CURIOSITY
+          </span>
+          <a href="#projects">
+            A few things I’ve made <Icon name="down" />
+          </a>
         </div>
       </Container>
     </section>

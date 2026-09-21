@@ -1,29 +1,40 @@
-import Container from "./Container";
-import { site } from "../content/site";
-
+import Container from './Container';
+import Icon from './Icon';
+import { site } from '../content/site';
 export default function Footer() {
   return (
-    <footer className="border-t border-border py-8 text-sm text-muted">
+    <footer className="site-footer">
       <Container>
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-2">
-          <span>© {new Date().getFullYear()} {site.name}</span>
-          <div className="flex gap-4">
-            <a href={`mailto:${site.links.email}`} className="hover:text-fg transition-colors">
-              Email
+        <div className="footer-inner">
+          <div>
+            <a href="#home" className="footer-brand">
+              Matt Wang.
             </a>
-            <a href={site.links.github} target="_blank" rel="noopener noreferrer" className="hover:text-fg transition-colors">
-              GitHub
-            </a>
-            <a href={site.links.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-fg transition-colors">
-              LinkedIn
-            </a>
+            <p>© {new Date().getFullYear()} · Made with a little curiosity.</p>
           </div>
+          <nav aria-label="Social links">
+            <a href={`mailto:${site.links.email}`}>
+              Email <Icon name="arrow" />
+            </a>
+            <a
+              href={site.links.github}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub <Icon name="arrow" />
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
+            <a
+              href={site.links.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn <Icon name="arrow" />
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
+          </nav>
         </div>
       </Container>
     </footer>
   );
 }
-
-
-
-

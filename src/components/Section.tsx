@@ -1,29 +1,34 @@
+import Container from './Container';
 interface SectionProps {
-  id?: string;
-  title?: string;
+  id: string;
+  title: string;
   subtitle?: string;
+  number: string;
   children: React.ReactNode;
 }
-
-export default function Section({ id, title, subtitle, children }: SectionProps) {
+export default function Section({
+  id,
+  title,
+  subtitle,
+  number,
+  children,
+}: SectionProps) {
   return (
     <section
-      className="relative min-h-screen flex flex-col justify-center items-center px-4"
+      id={id}
+      className={`section section-${id}`}
+      aria-labelledby={`${id}-title`}
     >
-      {/* Invisible anchor positioned at the left edge */}
-      {id && <div id={id} className="absolute left-0 top-0 w-0 h-0" />}
-
-      <div className="max-w-4xl w-full text-left">
-        {title && (
-          <div className="mb-8">
-            <h2 className="text-2xl font-semibold tracking-tight">{title}</h2>
-            {subtitle && <p className="text-muted mt-1">{subtitle}</p>}
+      <Container>
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow section-index">{number} / SELECTED WORK</p>
+            <h2 id={`${id}-title`}>{title}</h2>
           </div>
-        )}
+          {subtitle && <p className="section-subtitle">{subtitle}</p>}
+        </div>
         {children}
-      </div>
+      </Container>
     </section>
   );
 }
-
-

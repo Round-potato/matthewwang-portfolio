@@ -134,7 +134,7 @@ useEffect(() => {
         if (n > 0) { a.vx += (sepX / n) * dt; a.vy += (sepY / n) * dt; }
       }
 
-      for (let s of flock) {
+      for (const s of flock) {
         // light wander
         if (!reducedMotion) {
           s.vx += Math.cos((ts * 0.0012 + s.y) * 0.33) * wanderK * dt;

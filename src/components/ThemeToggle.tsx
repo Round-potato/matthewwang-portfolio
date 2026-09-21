@@ -1,19 +1,17 @@
-import { useTheme } from "./ThemeProvider";
-
+import { useTheme } from './theme-context';
+import Icon from './Icon';
 export default function ThemeToggle() {
   const { theme, setTheme } = useTheme();
-  const next = theme === "light" ? "dark" : "light";
+  const next = theme === 'light' ? 'dark' : 'light';
   return (
     <button
+      type="button"
       onClick={() => setTheme(next)}
-      className="rounded-full border border-border px-3 py-1 text-sm text-muted hover:bg-card transition"
-      aria-label="Toggle theme"
+      className="theme-toggle"
+      aria-label={`Switch to ${next} theme`}
+      title={`Switch to ${next} theme`}
     >
-      {theme === "light" ? "Dark" : "Light"}
+      <Icon name={theme === 'light' ? 'moon' : 'sun'} />
     </button>
   );
 }
-
-
-
-
