@@ -35,7 +35,6 @@ export default function SheepFlock({
 
   // Helpers
   const rnd = (a: number, b: number) => a + Math.random() * (b - a);
-  const clamp = (v: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, v));
 
   // Resize + (re)seed
   useEffect(() => {
@@ -112,7 +111,7 @@ export default function SheepFlock({
       const sheep = sheepRef.current;
       const dog = mouseRef.current;
 
-      for (let s of sheep) {
+      for (const s of sheep) {
         // Wander (slow noise-ish drift)
         if (!reducedMotion) {
           s.vx += Math.cos((ts * 0.001 + s.x) * 0.3) * 2 * dt;
